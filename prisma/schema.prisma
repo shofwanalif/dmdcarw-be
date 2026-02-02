@@ -1,0 +1,175 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output = "./client"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// ENUMS
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  ON_SITE
+}
+
+// MODELS
+
+model User {
+  id        BigInt   @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+  email     String   @unique @db.VarChar(150)
+  password  String   @db.VarChar(255)
+  
+
+  bookings  Booking[]
+
+  role      String   @default("admin")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?      
+
+  @@map("users")
+}
+
+//////////////////////////////////////////////////
+
+model ServiceCategory {
+  id        BigInt   @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+
+  services  Service[]
+
+  createdAt DateTime @default(now())
+  deletedAt DateTime?      
+
+  @@map("service_categories")
+}
+
+//////////////////////////////////////////////////
+
+model Service {
+  id                 BigInt   @id @default(autoincrement())
+  serviceCategoryId  BigInt
+  name               String   @db.VarChar(150)
+  price              Decimal  @db.Decimal(10, 2)
+  duration           Int
+
+  serviceCategory    ServiceCategory @relation(fields: [serviceCategoryId], references: [id])
+  dateSlots          DateSlot[]
+  featureMaps        ServiceFeatureMap[]
+
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  deletedAt          DateTime?      
+
+  @@index([serviceCategoryId])
+  @@map("services")
+}
+
+//////////////////////////////////////////////////
+
+model ServiceFeature {
+  id        BigInt   @id @default(autoincrement())
+  name      String   @db.VarChar(150)
+
+  featureMaps ServiceFeatureMap[]
+
+  createdAt DateTime @default(now())
+  deletedAt DateTime?      
+
+  @@map("service_features")
+}
+
+//////////////////////////////////////////////////
+
+model ServiceFeatureMap {
+  id        BigInt @id @default(autoincrement())
+  serviceId BigInt
+  featureId BigInt
+
+  service   Service        @relation(fields: [serviceId], references: [id])
+  feature   ServiceFeature @relation(fields: [featureId], references: [id])
+
+  @@index([serviceId])
+  @@index([featureId])
+  @@unique([serviceId, featureId])
+
+  @@map("service_feature_maps")
+}
+
+//////////////////////////////////////////////////
+
+model TimeSlot {
+  id        BigInt   @id @default(autoincrement())
+  time      DateTime @db.Time(0)
+
+  dateSlots DateSlot[]
+
+  createdAt DateTime @default(now())
+
+  @@map("time_slots")
+}
+
+//////////////////////////////////////////////////
+
+model DateSlot {
+  id          BigInt   @id @default(autoincrement())
+  date        DateTime @db.Date
+  timeSlotId  BigInt
+  serviceId   BigInt
+  maxCapacity Int
+
+  timeSlot    TimeSlot @relation(fields: [timeSlotId], references: [id])
+  service     Service  @relation(fields: [serviceId], references: [id])
+  bookings    Booking[]
+
+  createdAt   DateTime @default(now())
+
+  @@index([date, serviceId])
+  @@unique([date, timeSlotId, serviceId])
+
+  @@map("date_slots")
+}
+
+//////////////////////////////////////////////////
+
+model Booking {
+  id             BigInt        @id @default(autoincrement())
+  bookingCode    String        @unique @db.VarChar(50)
+
+  userId         BigInt
+  dateSlotId     BigInt
+
+  customerName   String        @db.VarChar(100)
+  phone          String        @db.VarChar(20)
+  vehicleNumber  String        @db.VarChar(20)
+
+  paymentMethod  PaymentMethod
+  status         BookingStatus
+
+  user           User     @relation(fields: [userId], references: [id])
+  dateSlot       DateSlot @relation(fields: [dateSlotId], references: [id])
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt   
+
+  @@index([dateSlotId])
+  @@index([dateSlotId, status])
+
+  @@map("bookings")
+}
+
