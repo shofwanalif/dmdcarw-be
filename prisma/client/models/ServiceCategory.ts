@@ -346,6 +346,14 @@ export type ServiceCategoryScalarRelationFilter = {
   isNot?: Prisma.ServiceCategoryWhereInput
 }
 
+export type BigIntFieldUpdateOperationsInput = {
+  set?: bigint | number
+  increment?: bigint | number
+  decrement?: bigint | number
+  multiply?: bigint | number
+  divide?: bigint | number
+}
+
 export type ServiceCategoryCreateNestedOneWithoutServicesInput = {
   create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutServicesInput, Prisma.ServiceCategoryUncheckedCreateWithoutServicesInput>
   connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutServicesInput

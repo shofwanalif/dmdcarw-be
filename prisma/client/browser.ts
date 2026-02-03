@@ -57,3 +57,18 @@ export type DateSlot = Prisma.DateSlotModel
  * 
  */
 export type Booking = Prisma.BookingModel
+/**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
+ * Model Account
+ * 
+ */
+export type Account = Prisma.AccountModel
+/**
+ * Model Verification
+ * 
+ */
+export type Verification = Prisma.VerificationModel
