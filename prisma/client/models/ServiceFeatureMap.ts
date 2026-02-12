@@ -33,21 +33,21 @@ export type ServiceFeatureMapAvgAggregateOutputType = {
 }
 
 export type ServiceFeatureMapSumAggregateOutputType = {
-  id: bigint | null
-  serviceId: bigint | null
-  featureId: bigint | null
+  id: number | null
+  serviceId: number | null
+  featureId: number | null
 }
 
 export type ServiceFeatureMapMinAggregateOutputType = {
-  id: bigint | null
-  serviceId: bigint | null
-  featureId: bigint | null
+  id: number | null
+  serviceId: number | null
+  featureId: number | null
 }
 
 export type ServiceFeatureMapMaxAggregateOutputType = {
-  id: bigint | null
-  serviceId: bigint | null
-  featureId: bigint | null
+  id: number | null
+  serviceId: number | null
+  featureId: number | null
 }
 
 export type ServiceFeatureMapCountAggregateOutputType = {
@@ -176,9 +176,9 @@ export type ServiceFeatureMapGroupByArgs<ExtArgs extends runtime.Types.Extension
 }
 
 export type ServiceFeatureMapGroupByOutputType = {
-  id: bigint
-  serviceId: bigint
-  featureId: bigint
+  id: number
+  serviceId: number
+  featureId: number
   _count: ServiceFeatureMapCountAggregateOutputType | null
   _avg: ServiceFeatureMapAvgAggregateOutputType | null
   _sum: ServiceFeatureMapSumAggregateOutputType | null
@@ -205,9 +205,9 @@ export type ServiceFeatureMapWhereInput = {
   AND?: Prisma.ServiceFeatureMapWhereInput | Prisma.ServiceFeatureMapWhereInput[]
   OR?: Prisma.ServiceFeatureMapWhereInput[]
   NOT?: Prisma.ServiceFeatureMapWhereInput | Prisma.ServiceFeatureMapWhereInput[]
-  id?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
-  serviceId?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
-  featureId?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
+  id?: Prisma.IntFilter<"ServiceFeatureMap"> | number
+  serviceId?: Prisma.IntFilter<"ServiceFeatureMap"> | number
+  featureId?: Prisma.IntFilter<"ServiceFeatureMap"> | number
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
   feature?: Prisma.XOR<Prisma.ServiceFeatureScalarRelationFilter, Prisma.ServiceFeatureWhereInput>
 }
@@ -221,13 +221,13 @@ export type ServiceFeatureMapOrderByWithRelationInput = {
 }
 
 export type ServiceFeatureMapWhereUniqueInput = Prisma.AtLeast<{
-  id?: bigint | number
+  id?: number
   serviceId_featureId?: Prisma.ServiceFeatureMapServiceIdFeatureIdCompoundUniqueInput
   AND?: Prisma.ServiceFeatureMapWhereInput | Prisma.ServiceFeatureMapWhereInput[]
   OR?: Prisma.ServiceFeatureMapWhereInput[]
   NOT?: Prisma.ServiceFeatureMapWhereInput | Prisma.ServiceFeatureMapWhereInput[]
-  serviceId?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
-  featureId?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
+  serviceId?: Prisma.IntFilter<"ServiceFeatureMap"> | number
+  featureId?: Prisma.IntFilter<"ServiceFeatureMap"> | number
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
   feature?: Prisma.XOR<Prisma.ServiceFeatureScalarRelationFilter, Prisma.ServiceFeatureWhereInput>
 }, "id" | "serviceId_featureId">
@@ -247,49 +247,47 @@ export type ServiceFeatureMapScalarWhereWithAggregatesInput = {
   AND?: Prisma.ServiceFeatureMapScalarWhereWithAggregatesInput | Prisma.ServiceFeatureMapScalarWhereWithAggregatesInput[]
   OR?: Prisma.ServiceFeatureMapScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServiceFeatureMapScalarWhereWithAggregatesInput | Prisma.ServiceFeatureMapScalarWhereWithAggregatesInput[]
-  id?: Prisma.BigIntWithAggregatesFilter<"ServiceFeatureMap"> | bigint | number
-  serviceId?: Prisma.BigIntWithAggregatesFilter<"ServiceFeatureMap"> | bigint | number
-  featureId?: Prisma.BigIntWithAggregatesFilter<"ServiceFeatureMap"> | bigint | number
+  id?: Prisma.IntWithAggregatesFilter<"ServiceFeatureMap"> | number
+  serviceId?: Prisma.IntWithAggregatesFilter<"ServiceFeatureMap"> | number
+  featureId?: Prisma.IntWithAggregatesFilter<"ServiceFeatureMap"> | number
 }
 
 export type ServiceFeatureMapCreateInput = {
-  id?: bigint | number
   service: Prisma.ServiceCreateNestedOneWithoutFeatureMapsInput
   feature: Prisma.ServiceFeatureCreateNestedOneWithoutFeatureMapsInput
 }
 
 export type ServiceFeatureMapUncheckedCreateInput = {
-  id?: bigint | number
-  serviceId: bigint | number
-  featureId: bigint | number
+  id?: number
+  serviceId: number
+  featureId: number
 }
 
 export type ServiceFeatureMapUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   service?: Prisma.ServiceUpdateOneRequiredWithoutFeatureMapsNestedInput
   feature?: Prisma.ServiceFeatureUpdateOneRequiredWithoutFeatureMapsNestedInput
 }
 
 export type ServiceFeatureMapUncheckedUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  featureId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ServiceFeatureMapCreateManyInput = {
-  id?: bigint | number
-  serviceId: bigint | number
-  featureId: bigint | number
+  id?: number
+  serviceId: number
+  featureId: number
 }
 
 export type ServiceFeatureMapUpdateManyMutationInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+
 }
 
 export type ServiceFeatureMapUncheckedUpdateManyInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  featureId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ServiceFeatureMapListRelationFilter = {
@@ -303,8 +301,8 @@ export type ServiceFeatureMapOrderByRelationAggregateInput = {
 }
 
 export type ServiceFeatureMapServiceIdFeatureIdCompoundUniqueInput = {
-  serviceId: bigint | number
-  featureId: bigint | number
+  serviceId: number
+  featureId: number
 }
 
 export type ServiceFeatureMapCountOrderByAggregateInput = {
@@ -422,13 +420,12 @@ export type ServiceFeatureMapUncheckedUpdateManyWithoutFeatureNestedInput = {
 }
 
 export type ServiceFeatureMapCreateWithoutServiceInput = {
-  id?: bigint | number
   feature: Prisma.ServiceFeatureCreateNestedOneWithoutFeatureMapsInput
 }
 
 export type ServiceFeatureMapUncheckedCreateWithoutServiceInput = {
-  id?: bigint | number
-  featureId: bigint | number
+  id?: number
+  featureId: number
 }
 
 export type ServiceFeatureMapCreateOrConnectWithoutServiceInput = {
@@ -461,19 +458,18 @@ export type ServiceFeatureMapScalarWhereInput = {
   AND?: Prisma.ServiceFeatureMapScalarWhereInput | Prisma.ServiceFeatureMapScalarWhereInput[]
   OR?: Prisma.ServiceFeatureMapScalarWhereInput[]
   NOT?: Prisma.ServiceFeatureMapScalarWhereInput | Prisma.ServiceFeatureMapScalarWhereInput[]
-  id?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
-  serviceId?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
-  featureId?: Prisma.BigIntFilter<"ServiceFeatureMap"> | bigint | number
+  id?: Prisma.IntFilter<"ServiceFeatureMap"> | number
+  serviceId?: Prisma.IntFilter<"ServiceFeatureMap"> | number
+  featureId?: Prisma.IntFilter<"ServiceFeatureMap"> | number
 }
 
 export type ServiceFeatureMapCreateWithoutFeatureInput = {
-  id?: bigint | number
   service: Prisma.ServiceCreateNestedOneWithoutFeatureMapsInput
 }
 
 export type ServiceFeatureMapUncheckedCreateWithoutFeatureInput = {
-  id?: bigint | number
-  serviceId: bigint | number
+  id?: number
+  serviceId: number
 }
 
 export type ServiceFeatureMapCreateOrConnectWithoutFeatureInput = {
@@ -503,43 +499,41 @@ export type ServiceFeatureMapUpdateManyWithWhereWithoutFeatureInput = {
 }
 
 export type ServiceFeatureMapCreateManyServiceInput = {
-  id?: bigint | number
-  featureId: bigint | number
+  id?: number
+  featureId: number
 }
 
 export type ServiceFeatureMapUpdateWithoutServiceInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   feature?: Prisma.ServiceFeatureUpdateOneRequiredWithoutFeatureMapsNestedInput
 }
 
 export type ServiceFeatureMapUncheckedUpdateWithoutServiceInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  featureId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ServiceFeatureMapUncheckedUpdateManyWithoutServiceInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  featureId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  featureId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ServiceFeatureMapCreateManyFeatureInput = {
-  id?: bigint | number
-  serviceId: bigint | number
+  id?: number
+  serviceId: number
 }
 
 export type ServiceFeatureMapUpdateWithoutFeatureInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   service?: Prisma.ServiceUpdateOneRequiredWithoutFeatureMapsNestedInput
 }
 
 export type ServiceFeatureMapUncheckedUpdateWithoutFeatureInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ServiceFeatureMapUncheckedUpdateManyWithoutFeatureInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -573,9 +567,9 @@ export type $ServiceFeatureMapPayload<ExtArgs extends runtime.Types.Extensions.I
     feature: Prisma.$ServiceFeaturePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: bigint
-    serviceId: bigint
-    featureId: bigint
+    id: number
+    serviceId: number
+    featureId: number
   }, ExtArgs["result"]["serviceFeatureMap"]>
   composites: {}
 }
@@ -947,9 +941,9 @@ export interface Prisma__ServiceFeatureMapClient<T, Null = never, ExtArgs extend
  * Fields of the ServiceFeatureMap model
  */
 export interface ServiceFeatureMapFieldRefs {
-  readonly id: Prisma.FieldRef<"ServiceFeatureMap", 'BigInt'>
-  readonly serviceId: Prisma.FieldRef<"ServiceFeatureMap", 'BigInt'>
-  readonly featureId: Prisma.FieldRef<"ServiceFeatureMap", 'BigInt'>
+  readonly id: Prisma.FieldRef<"ServiceFeatureMap", 'Int'>
+  readonly serviceId: Prisma.FieldRef<"ServiceFeatureMap", 'Int'>
+  readonly featureId: Prisma.FieldRef<"ServiceFeatureMap", 'Int'>
 }
     
 

@@ -34,28 +34,32 @@ export type DateSlotAvgAggregateOutputType = {
 }
 
 export type DateSlotSumAggregateOutputType = {
-  id: bigint | null
-  timeSlotId: bigint | null
-  serviceId: bigint | null
+  id: number | null
+  timeSlotId: number | null
+  serviceId: number | null
   maxCapacity: number | null
 }
 
 export type DateSlotMinAggregateOutputType = {
-  id: bigint | null
+  id: number | null
   date: Date | null
-  timeSlotId: bigint | null
-  serviceId: bigint | null
+  timeSlotId: number | null
+  serviceId: number | null
   maxCapacity: number | null
   createdAt: Date | null
+  updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type DateSlotMaxAggregateOutputType = {
-  id: bigint | null
+  id: number | null
   date: Date | null
-  timeSlotId: bigint | null
-  serviceId: bigint | null
+  timeSlotId: number | null
+  serviceId: number | null
   maxCapacity: number | null
   createdAt: Date | null
+  updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type DateSlotCountAggregateOutputType = {
@@ -65,6 +69,8 @@ export type DateSlotCountAggregateOutputType = {
   serviceId: number
   maxCapacity: number
   createdAt: number
+  updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -90,6 +96,8 @@ export type DateSlotMinAggregateInputType = {
   serviceId?: true
   maxCapacity?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
 }
 
 export type DateSlotMaxAggregateInputType = {
@@ -99,6 +107,8 @@ export type DateSlotMaxAggregateInputType = {
   serviceId?: true
   maxCapacity?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
 }
 
 export type DateSlotCountAggregateInputType = {
@@ -108,6 +118,8 @@ export type DateSlotCountAggregateInputType = {
   serviceId?: true
   maxCapacity?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -198,12 +210,14 @@ export type DateSlotGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 export type DateSlotGroupByOutputType = {
-  id: bigint
+  id: number
   date: Date
-  timeSlotId: bigint
-  serviceId: bigint
+  timeSlotId: number
+  serviceId: number
   maxCapacity: number
   createdAt: Date
+  updatedAt: Date | null
+  deletedAt: Date | null
   _count: DateSlotCountAggregateOutputType | null
   _avg: DateSlotAvgAggregateOutputType | null
   _sum: DateSlotSumAggregateOutputType | null
@@ -230,15 +244,17 @@ export type DateSlotWhereInput = {
   AND?: Prisma.DateSlotWhereInput | Prisma.DateSlotWhereInput[]
   OR?: Prisma.DateSlotWhereInput[]
   NOT?: Prisma.DateSlotWhereInput | Prisma.DateSlotWhereInput[]
-  id?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
+  id?: Prisma.IntFilter<"DateSlot"> | number
   date?: Prisma.DateTimeFilter<"DateSlot"> | Date | string
-  timeSlotId?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
-  serviceId?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
+  timeSlotId?: Prisma.IntFilter<"DateSlot"> | number
+  serviceId?: Prisma.IntFilter<"DateSlot"> | number
   maxCapacity?: Prisma.IntFilter<"DateSlot"> | number
   createdAt?: Prisma.DateTimeFilter<"DateSlot"> | Date | string
-  timeSlot?: Prisma.XOR<Prisma.TimeSlotScalarRelationFilter, Prisma.TimeSlotWhereInput>
-  service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  updatedAt?: Prisma.DateTimeNullableFilter<"DateSlot"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"DateSlot"> | Date | string | null
   bookings?: Prisma.BookingListRelationFilter
+  service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  timeSlot?: Prisma.XOR<Prisma.TimeSlotScalarRelationFilter, Prisma.TimeSlotWhereInput>
 }
 
 export type DateSlotOrderByWithRelationInput = {
@@ -248,25 +264,29 @@ export type DateSlotOrderByWithRelationInput = {
   serviceId?: Prisma.SortOrder
   maxCapacity?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  timeSlot?: Prisma.TimeSlotOrderByWithRelationInput
-  service?: Prisma.ServiceOrderByWithRelationInput
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   bookings?: Prisma.BookingOrderByRelationAggregateInput
+  service?: Prisma.ServiceOrderByWithRelationInput
+  timeSlot?: Prisma.TimeSlotOrderByWithRelationInput
 }
 
 export type DateSlotWhereUniqueInput = Prisma.AtLeast<{
-  id?: bigint | number
+  id?: number
   date_timeSlotId_serviceId?: Prisma.DateSlotDateTimeSlotIdServiceIdCompoundUniqueInput
   AND?: Prisma.DateSlotWhereInput | Prisma.DateSlotWhereInput[]
   OR?: Prisma.DateSlotWhereInput[]
   NOT?: Prisma.DateSlotWhereInput | Prisma.DateSlotWhereInput[]
   date?: Prisma.DateTimeFilter<"DateSlot"> | Date | string
-  timeSlotId?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
-  serviceId?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
+  timeSlotId?: Prisma.IntFilter<"DateSlot"> | number
+  serviceId?: Prisma.IntFilter<"DateSlot"> | number
   maxCapacity?: Prisma.IntFilter<"DateSlot"> | number
   createdAt?: Prisma.DateTimeFilter<"DateSlot"> | Date | string
-  timeSlot?: Prisma.XOR<Prisma.TimeSlotScalarRelationFilter, Prisma.TimeSlotWhereInput>
-  service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  updatedAt?: Prisma.DateTimeNullableFilter<"DateSlot"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"DateSlot"> | Date | string | null
   bookings?: Prisma.BookingListRelationFilter
+  service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  timeSlot?: Prisma.XOR<Prisma.TimeSlotScalarRelationFilter, Prisma.TimeSlotWhereInput>
 }, "id" | "date_timeSlotId_serviceId">
 
 export type DateSlotOrderByWithAggregationInput = {
@@ -276,6 +296,8 @@ export type DateSlotOrderByWithAggregationInput = {
   serviceId?: Prisma.SortOrder
   maxCapacity?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DateSlotCountOrderByAggregateInput
   _avg?: Prisma.DateSlotAvgOrderByAggregateInput
   _max?: Prisma.DateSlotMaxOrderByAggregateInput
@@ -287,77 +309,90 @@ export type DateSlotScalarWhereWithAggregatesInput = {
   AND?: Prisma.DateSlotScalarWhereWithAggregatesInput | Prisma.DateSlotScalarWhereWithAggregatesInput[]
   OR?: Prisma.DateSlotScalarWhereWithAggregatesInput[]
   NOT?: Prisma.DateSlotScalarWhereWithAggregatesInput | Prisma.DateSlotScalarWhereWithAggregatesInput[]
-  id?: Prisma.BigIntWithAggregatesFilter<"DateSlot"> | bigint | number
+  id?: Prisma.IntWithAggregatesFilter<"DateSlot"> | number
   date?: Prisma.DateTimeWithAggregatesFilter<"DateSlot"> | Date | string
-  timeSlotId?: Prisma.BigIntWithAggregatesFilter<"DateSlot"> | bigint | number
-  serviceId?: Prisma.BigIntWithAggregatesFilter<"DateSlot"> | bigint | number
+  timeSlotId?: Prisma.IntWithAggregatesFilter<"DateSlot"> | number
+  serviceId?: Prisma.IntWithAggregatesFilter<"DateSlot"> | number
   maxCapacity?: Prisma.IntWithAggregatesFilter<"DateSlot"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"DateSlot"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"DateSlot"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"DateSlot"> | Date | string | null
 }
 
 export type DateSlotCreateInput = {
-  id?: bigint | number
   date: Date | string
   maxCapacity: number
   createdAt?: Date | string
-  timeSlot: Prisma.TimeSlotCreateNestedOneWithoutDateSlotsInput
-  service: Prisma.ServiceCreateNestedOneWithoutDateSlotsInput
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingCreateNestedManyWithoutDateSlotInput
+  service: Prisma.ServiceCreateNestedOneWithoutDateSlotsInput
+  timeSlot: Prisma.TimeSlotCreateNestedOneWithoutDateSlotsInput
 }
 
 export type DateSlotUncheckedCreateInput = {
-  id?: bigint | number
+  id?: number
   date: Date | string
-  timeSlotId: bigint | number
-  serviceId: bigint | number
+  timeSlotId: number
+  serviceId: number
   maxCapacity: number
   createdAt?: Date | string
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutDateSlotInput
 }
 
 export type DateSlotUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlot?: Prisma.TimeSlotUpdateOneRequiredWithoutDateSlotsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutDateSlotsNestedInput
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUpdateManyWithoutDateSlotNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutDateSlotsNestedInput
+  timeSlot?: Prisma.TimeSlotUpdateOneRequiredWithoutDateSlotsNestedInput
 }
 
 export type DateSlotUncheckedUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlotId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  timeSlotId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutDateSlotNestedInput
 }
 
 export type DateSlotCreateManyInput = {
-  id?: bigint | number
+  id?: number
   date: Date | string
-  timeSlotId: bigint | number
-  serviceId: bigint | number
+  timeSlotId: number
+  serviceId: number
   maxCapacity: number
   createdAt?: Date | string
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
 }
 
 export type DateSlotUpdateManyMutationInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type DateSlotUncheckedUpdateManyInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlotId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  timeSlotId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type DateSlotListRelationFilter = {
@@ -372,8 +407,8 @@ export type DateSlotOrderByRelationAggregateInput = {
 
 export type DateSlotDateTimeSlotIdServiceIdCompoundUniqueInput = {
   date: Date | string
-  timeSlotId: bigint | number
-  serviceId: bigint | number
+  timeSlotId: number
+  serviceId: number
 }
 
 export type DateSlotCountOrderByAggregateInput = {
@@ -383,6 +418,8 @@ export type DateSlotCountOrderByAggregateInput = {
   serviceId?: Prisma.SortOrder
   maxCapacity?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type DateSlotAvgOrderByAggregateInput = {
@@ -399,6 +436,8 @@ export type DateSlotMaxOrderByAggregateInput = {
   serviceId?: Prisma.SortOrder
   maxCapacity?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type DateSlotMinOrderByAggregateInput = {
@@ -408,6 +447,8 @@ export type DateSlotMinOrderByAggregateInput = {
   serviceId?: Prisma.SortOrder
   maxCapacity?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type DateSlotSumOrderByAggregateInput = {
@@ -521,20 +562,23 @@ export type DateSlotUpdateOneRequiredWithoutBookingsNestedInput = {
 }
 
 export type DateSlotCreateWithoutServiceInput = {
-  id?: bigint | number
   date: Date | string
   maxCapacity: number
   createdAt?: Date | string
-  timeSlot: Prisma.TimeSlotCreateNestedOneWithoutDateSlotsInput
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingCreateNestedManyWithoutDateSlotInput
+  timeSlot: Prisma.TimeSlotCreateNestedOneWithoutDateSlotsInput
 }
 
 export type DateSlotUncheckedCreateWithoutServiceInput = {
-  id?: bigint | number
+  id?: number
   date: Date | string
-  timeSlotId: bigint | number
+  timeSlotId: number
   maxCapacity: number
   createdAt?: Date | string
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutDateSlotInput
 }
 
@@ -568,29 +612,34 @@ export type DateSlotScalarWhereInput = {
   AND?: Prisma.DateSlotScalarWhereInput | Prisma.DateSlotScalarWhereInput[]
   OR?: Prisma.DateSlotScalarWhereInput[]
   NOT?: Prisma.DateSlotScalarWhereInput | Prisma.DateSlotScalarWhereInput[]
-  id?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
+  id?: Prisma.IntFilter<"DateSlot"> | number
   date?: Prisma.DateTimeFilter<"DateSlot"> | Date | string
-  timeSlotId?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
-  serviceId?: Prisma.BigIntFilter<"DateSlot"> | bigint | number
+  timeSlotId?: Prisma.IntFilter<"DateSlot"> | number
+  serviceId?: Prisma.IntFilter<"DateSlot"> | number
   maxCapacity?: Prisma.IntFilter<"DateSlot"> | number
   createdAt?: Prisma.DateTimeFilter<"DateSlot"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"DateSlot"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"DateSlot"> | Date | string | null
 }
 
 export type DateSlotCreateWithoutTimeSlotInput = {
-  id?: bigint | number
   date: Date | string
   maxCapacity: number
   createdAt?: Date | string
-  service: Prisma.ServiceCreateNestedOneWithoutDateSlotsInput
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingCreateNestedManyWithoutDateSlotInput
+  service: Prisma.ServiceCreateNestedOneWithoutDateSlotsInput
 }
 
 export type DateSlotUncheckedCreateWithoutTimeSlotInput = {
-  id?: bigint | number
+  id?: number
   date: Date | string
-  serviceId: bigint | number
+  serviceId: number
   maxCapacity: number
   createdAt?: Date | string
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutDateSlotInput
 }
 
@@ -621,21 +670,24 @@ export type DateSlotUpdateManyWithWhereWithoutTimeSlotInput = {
 }
 
 export type DateSlotCreateWithoutBookingsInput = {
-  id?: bigint | number
   date: Date | string
   maxCapacity: number
   createdAt?: Date | string
-  timeSlot: Prisma.TimeSlotCreateNestedOneWithoutDateSlotsInput
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
   service: Prisma.ServiceCreateNestedOneWithoutDateSlotsInput
+  timeSlot: Prisma.TimeSlotCreateNestedOneWithoutDateSlotsInput
 }
 
 export type DateSlotUncheckedCreateWithoutBookingsInput = {
-  id?: bigint | number
+  id?: number
   date: Date | string
-  timeSlotId: bigint | number
-  serviceId: bigint | number
+  timeSlotId: number
+  serviceId: number
   maxCapacity: number
   createdAt?: Date | string
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
 }
 
 export type DateSlotCreateOrConnectWithoutBookingsInput = {
@@ -655,89 +707,106 @@ export type DateSlotUpdateToOneWithWhereWithoutBookingsInput = {
 }
 
 export type DateSlotUpdateWithoutBookingsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlot?: Prisma.TimeSlotUpdateOneRequiredWithoutDateSlotsNestedInput
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   service?: Prisma.ServiceUpdateOneRequiredWithoutDateSlotsNestedInput
+  timeSlot?: Prisma.TimeSlotUpdateOneRequiredWithoutDateSlotsNestedInput
 }
 
 export type DateSlotUncheckedUpdateWithoutBookingsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlotId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  timeSlotId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type DateSlotCreateManyServiceInput = {
-  id?: bigint | number
+  id?: number
   date: Date | string
-  timeSlotId: bigint | number
+  timeSlotId: number
   maxCapacity: number
   createdAt?: Date | string
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
 }
 
 export type DateSlotUpdateWithoutServiceInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlot?: Prisma.TimeSlotUpdateOneRequiredWithoutDateSlotsNestedInput
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUpdateManyWithoutDateSlotNestedInput
+  timeSlot?: Prisma.TimeSlotUpdateOneRequiredWithoutDateSlotsNestedInput
 }
 
 export type DateSlotUncheckedUpdateWithoutServiceInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlotId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  timeSlotId?: Prisma.IntFieldUpdateOperationsInput | number
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutDateSlotNestedInput
 }
 
 export type DateSlotUncheckedUpdateManyWithoutServiceInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  timeSlotId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  timeSlotId?: Prisma.IntFieldUpdateOperationsInput | number
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type DateSlotCreateManyTimeSlotInput = {
-  id?: bigint | number
+  id?: number
   date: Date | string
-  serviceId: bigint | number
+  serviceId: number
   maxCapacity: number
   createdAt?: Date | string
+  updatedAt?: Date | string | null
+  deletedAt?: Date | string | null
 }
 
 export type DateSlotUpdateWithoutTimeSlotInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  service?: Prisma.ServiceUpdateOneRequiredWithoutDateSlotsNestedInput
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUpdateManyWithoutDateSlotNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutDateSlotsNestedInput
 }
 
 export type DateSlotUncheckedUpdateWithoutTimeSlotInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutDateSlotNestedInput
 }
 
 export type DateSlotUncheckedUpdateManyWithoutTimeSlotInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  serviceId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
   maxCapacity?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -778,9 +847,11 @@ export type DateSlotSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   serviceId?: boolean
   maxCapacity?: boolean
   createdAt?: boolean
-  timeSlot?: boolean | Prisma.TimeSlotDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  updatedAt?: boolean
+  deletedAt?: boolean
   bookings?: boolean | Prisma.DateSlot$bookingsArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  timeSlot?: boolean | Prisma.TimeSlotDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.DateSlotCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["dateSlot"]>
 
@@ -793,30 +864,34 @@ export type DateSlotSelectScalar = {
   serviceId?: boolean
   maxCapacity?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type DateSlotOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "date" | "timeSlotId" | "serviceId" | "maxCapacity" | "createdAt", ExtArgs["result"]["dateSlot"]>
+export type DateSlotOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "date" | "timeSlotId" | "serviceId" | "maxCapacity" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["dateSlot"]>
 export type DateSlotInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  timeSlot?: boolean | Prisma.TimeSlotDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
   bookings?: boolean | Prisma.DateSlot$bookingsArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  timeSlot?: boolean | Prisma.TimeSlotDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.DateSlotCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $DateSlotPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "DateSlot"
   objects: {
-    timeSlot: Prisma.$TimeSlotPayload<ExtArgs>
-    service: Prisma.$ServicePayload<ExtArgs>
     bookings: Prisma.$BookingPayload<ExtArgs>[]
+    service: Prisma.$ServicePayload<ExtArgs>
+    timeSlot: Prisma.$TimeSlotPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: bigint
+    id: number
     date: Date
-    timeSlotId: bigint
-    serviceId: bigint
+    timeSlotId: number
+    serviceId: number
     maxCapacity: number
     createdAt: Date
+    updatedAt: Date | null
+    deletedAt: Date | null
   }, ExtArgs["result"]["dateSlot"]>
   composites: {}
 }
@@ -1157,9 +1232,9 @@ readonly fields: DateSlotFieldRefs;
  */
 export interface Prisma__DateSlotClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  timeSlot<T extends Prisma.TimeSlotDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TimeSlotDefaultArgs<ExtArgs>>): Prisma.Prisma__TimeSlotClient<runtime.Types.Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  service<T extends Prisma.ServiceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   bookings<T extends Prisma.DateSlot$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DateSlot$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  service<T extends Prisma.ServiceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  timeSlot<T extends Prisma.TimeSlotDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TimeSlotDefaultArgs<ExtArgs>>): Prisma.Prisma__TimeSlotClient<runtime.Types.Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1189,12 +1264,14 @@ export interface Prisma__DateSlotClient<T, Null = never, ExtArgs extends runtime
  * Fields of the DateSlot model
  */
 export interface DateSlotFieldRefs {
-  readonly id: Prisma.FieldRef<"DateSlot", 'BigInt'>
+  readonly id: Prisma.FieldRef<"DateSlot", 'Int'>
   readonly date: Prisma.FieldRef<"DateSlot", 'DateTime'>
-  readonly timeSlotId: Prisma.FieldRef<"DateSlot", 'BigInt'>
-  readonly serviceId: Prisma.FieldRef<"DateSlot", 'BigInt'>
+  readonly timeSlotId: Prisma.FieldRef<"DateSlot", 'Int'>
+  readonly serviceId: Prisma.FieldRef<"DateSlot", 'Int'>
   readonly maxCapacity: Prisma.FieldRef<"DateSlot", 'Int'>
   readonly createdAt: Prisma.FieldRef<"DateSlot", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"DateSlot", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"DateSlot", 'DateTime'>
 }
     
 

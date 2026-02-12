@@ -31,18 +31,18 @@ export type ServiceCategoryAvgAggregateOutputType = {
 }
 
 export type ServiceCategorySumAggregateOutputType = {
-  id: bigint | null
+  id: number | null
 }
 
 export type ServiceCategoryMinAggregateOutputType = {
-  id: bigint | null
+  id: number | null
   name: string | null
   createdAt: Date | null
   deletedAt: Date | null
 }
 
 export type ServiceCategoryMaxAggregateOutputType = {
-  id: bigint | null
+  id: number | null
   name: string | null
   createdAt: Date | null
   deletedAt: Date | null
@@ -174,7 +174,7 @@ export type ServiceCategoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 export type ServiceCategoryGroupByOutputType = {
-  id: bigint
+  id: number
   name: string
   createdAt: Date
   deletedAt: Date | null
@@ -204,7 +204,7 @@ export type ServiceCategoryWhereInput = {
   AND?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
   OR?: Prisma.ServiceCategoryWhereInput[]
   NOT?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
-  id?: Prisma.BigIntFilter<"ServiceCategory"> | bigint | number
+  id?: Prisma.IntFilter<"ServiceCategory"> | number
   name?: Prisma.StringFilter<"ServiceCategory"> | string
   createdAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"ServiceCategory"> | Date | string | null
@@ -221,7 +221,7 @@ export type ServiceCategoryOrderByWithRelationInput = {
 }
 
 export type ServiceCategoryWhereUniqueInput = Prisma.AtLeast<{
-  id?: bigint | number
+  id?: number
   AND?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
   OR?: Prisma.ServiceCategoryWhereInput[]
   NOT?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
@@ -247,14 +247,13 @@ export type ServiceCategoryScalarWhereWithAggregatesInput = {
   AND?: Prisma.ServiceCategoryScalarWhereWithAggregatesInput | Prisma.ServiceCategoryScalarWhereWithAggregatesInput[]
   OR?: Prisma.ServiceCategoryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServiceCategoryScalarWhereWithAggregatesInput | Prisma.ServiceCategoryScalarWhereWithAggregatesInput[]
-  id?: Prisma.BigIntWithAggregatesFilter<"ServiceCategory"> | bigint | number
+  id?: Prisma.IntWithAggregatesFilter<"ServiceCategory"> | number
   name?: Prisma.StringWithAggregatesFilter<"ServiceCategory"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceCategory"> | Date | string | null
 }
 
 export type ServiceCategoryCreateInput = {
-  id?: bigint | number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -262,7 +261,7 @@ export type ServiceCategoryCreateInput = {
 }
 
 export type ServiceCategoryUncheckedCreateInput = {
-  id?: bigint | number
+  id?: number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -270,7 +269,6 @@ export type ServiceCategoryUncheckedCreateInput = {
 }
 
 export type ServiceCategoryUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -278,7 +276,7 @@ export type ServiceCategoryUpdateInput = {
 }
 
 export type ServiceCategoryUncheckedUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -286,21 +284,20 @@ export type ServiceCategoryUncheckedUpdateInput = {
 }
 
 export type ServiceCategoryCreateManyInput = {
-  id?: bigint | number
+  id?: number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
 }
 
 export type ServiceCategoryUpdateManyMutationInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ServiceCategoryUncheckedUpdateManyInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -346,12 +343,12 @@ export type ServiceCategoryScalarRelationFilter = {
   isNot?: Prisma.ServiceCategoryWhereInput
 }
 
-export type BigIntFieldUpdateOperationsInput = {
-  set?: bigint | number
-  increment?: bigint | number
-  decrement?: bigint | number
-  multiply?: bigint | number
-  divide?: bigint | number
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type ServiceCategoryCreateNestedOneWithoutServicesInput = {
@@ -369,14 +366,13 @@ export type ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput = {
 }
 
 export type ServiceCategoryCreateWithoutServicesInput = {
-  id?: bigint | number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
 }
 
 export type ServiceCategoryUncheckedCreateWithoutServicesInput = {
-  id?: bigint | number
+  id?: number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -399,14 +395,13 @@ export type ServiceCategoryUpdateToOneWithWhereWithoutServicesInput = {
 }
 
 export type ServiceCategoryUpdateWithoutServicesInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ServiceCategoryUncheckedUpdateWithoutServicesInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -473,7 +468,7 @@ export type $ServiceCategoryPayload<ExtArgs extends runtime.Types.Extensions.Int
     services: Prisma.$ServicePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: bigint
+    id: number
     name: string
     createdAt: Date
     deletedAt: Date | null
@@ -847,7 +842,7 @@ export interface Prisma__ServiceCategoryClient<T, Null = never, ExtArgs extends 
  * Fields of the ServiceCategory model
  */
 export interface ServiceCategoryFieldRefs {
-  readonly id: Prisma.FieldRef<"ServiceCategory", 'BigInt'>
+  readonly id: Prisma.FieldRef<"ServiceCategory", 'Int'>
   readonly name: Prisma.FieldRef<"ServiceCategory", 'String'>
   readonly createdAt: Prisma.FieldRef<"ServiceCategory", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"ServiceCategory", 'DateTime'>
