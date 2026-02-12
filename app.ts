@@ -3,6 +3,12 @@ import cors from "cors";
 import morgan from "morgan";
 import { toNodeHandler } from "better-auth/node";
 import authRoutes from "./src/auth/auth.route.js";
+import categoryRoutes from "./src/categories/category.route.js";
+import featureRoutes from "./src/features/feature.route.js";
+import slotRoutes from "./src/slots/slots.route.js";
+import serviceRoutes from "./src/services/service.route.js";
+import dateSlotsRoutes from "./src/dateslots/dateslots.route.js";
+import bookingRoutes from "./src/bookings/booking.route.js";
 
 import { env } from "./src/config/env.js";
 import routes from "./src/routes/index.js";
@@ -36,6 +42,13 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 
 // Routes
 app.use("/api", routes);
+app.use("/api/bookings", bookingRoutes);
+
+app.use("/api/admin", categoryRoutes);
+app.use("/api/admin", featureRoutes);
+app.use("/api/admin", slotRoutes);
+app.use("/api/services", serviceRoutes);
+app.use("/api/admin/dateslots", dateSlotsRoutes);
 
 // Error Handling
 app.use(notFound);

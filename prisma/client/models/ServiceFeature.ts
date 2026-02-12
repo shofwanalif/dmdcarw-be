@@ -31,18 +31,18 @@ export type ServiceFeatureAvgAggregateOutputType = {
 }
 
 export type ServiceFeatureSumAggregateOutputType = {
-  id: bigint | null
+  id: number | null
 }
 
 export type ServiceFeatureMinAggregateOutputType = {
-  id: bigint | null
+  id: number | null
   name: string | null
   createdAt: Date | null
   deletedAt: Date | null
 }
 
 export type ServiceFeatureMaxAggregateOutputType = {
-  id: bigint | null
+  id: number | null
   name: string | null
   createdAt: Date | null
   deletedAt: Date | null
@@ -174,7 +174,7 @@ export type ServiceFeatureGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 export type ServiceFeatureGroupByOutputType = {
-  id: bigint
+  id: number
   name: string
   createdAt: Date
   deletedAt: Date | null
@@ -204,7 +204,7 @@ export type ServiceFeatureWhereInput = {
   AND?: Prisma.ServiceFeatureWhereInput | Prisma.ServiceFeatureWhereInput[]
   OR?: Prisma.ServiceFeatureWhereInput[]
   NOT?: Prisma.ServiceFeatureWhereInput | Prisma.ServiceFeatureWhereInput[]
-  id?: Prisma.BigIntFilter<"ServiceFeature"> | bigint | number
+  id?: Prisma.IntFilter<"ServiceFeature"> | number
   name?: Prisma.StringFilter<"ServiceFeature"> | string
   createdAt?: Prisma.DateTimeFilter<"ServiceFeature"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"ServiceFeature"> | Date | string | null
@@ -221,7 +221,7 @@ export type ServiceFeatureOrderByWithRelationInput = {
 }
 
 export type ServiceFeatureWhereUniqueInput = Prisma.AtLeast<{
-  id?: bigint | number
+  id?: number
   AND?: Prisma.ServiceFeatureWhereInput | Prisma.ServiceFeatureWhereInput[]
   OR?: Prisma.ServiceFeatureWhereInput[]
   NOT?: Prisma.ServiceFeatureWhereInput | Prisma.ServiceFeatureWhereInput[]
@@ -247,14 +247,13 @@ export type ServiceFeatureScalarWhereWithAggregatesInput = {
   AND?: Prisma.ServiceFeatureScalarWhereWithAggregatesInput | Prisma.ServiceFeatureScalarWhereWithAggregatesInput[]
   OR?: Prisma.ServiceFeatureScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServiceFeatureScalarWhereWithAggregatesInput | Prisma.ServiceFeatureScalarWhereWithAggregatesInput[]
-  id?: Prisma.BigIntWithAggregatesFilter<"ServiceFeature"> | bigint | number
+  id?: Prisma.IntWithAggregatesFilter<"ServiceFeature"> | number
   name?: Prisma.StringWithAggregatesFilter<"ServiceFeature"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceFeature"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceFeature"> | Date | string | null
 }
 
 export type ServiceFeatureCreateInput = {
-  id?: bigint | number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -262,7 +261,7 @@ export type ServiceFeatureCreateInput = {
 }
 
 export type ServiceFeatureUncheckedCreateInput = {
-  id?: bigint | number
+  id?: number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -270,7 +269,6 @@ export type ServiceFeatureUncheckedCreateInput = {
 }
 
 export type ServiceFeatureUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -278,7 +276,7 @@ export type ServiceFeatureUpdateInput = {
 }
 
 export type ServiceFeatureUncheckedUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -286,21 +284,20 @@ export type ServiceFeatureUncheckedUpdateInput = {
 }
 
 export type ServiceFeatureCreateManyInput = {
-  id?: bigint | number
+  id?: number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
 }
 
 export type ServiceFeatureUpdateManyMutationInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ServiceFeatureUncheckedUpdateManyInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -361,14 +358,13 @@ export type ServiceFeatureUpdateOneRequiredWithoutFeatureMapsNestedInput = {
 }
 
 export type ServiceFeatureCreateWithoutFeatureMapsInput = {
-  id?: bigint | number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
 }
 
 export type ServiceFeatureUncheckedCreateWithoutFeatureMapsInput = {
-  id?: bigint | number
+  id?: number
   name: string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -391,14 +387,13 @@ export type ServiceFeatureUpdateToOneWithWhereWithoutFeatureMapsInput = {
 }
 
 export type ServiceFeatureUpdateWithoutFeatureMapsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ServiceFeatureUncheckedUpdateWithoutFeatureMapsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -465,7 +460,7 @@ export type $ServiceFeaturePayload<ExtArgs extends runtime.Types.Extensions.Inte
     featureMaps: Prisma.$ServiceFeatureMapPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: bigint
+    id: number
     name: string
     createdAt: Date
     deletedAt: Date | null
@@ -839,7 +834,7 @@ export interface Prisma__ServiceFeatureClient<T, Null = never, ExtArgs extends r
  * Fields of the ServiceFeature model
  */
 export interface ServiceFeatureFieldRefs {
-  readonly id: Prisma.FieldRef<"ServiceFeature", 'BigInt'>
+  readonly id: Prisma.FieldRef<"ServiceFeature", 'Int'>
   readonly name: Prisma.FieldRef<"ServiceFeature", 'String'>
   readonly createdAt: Prisma.FieldRef<"ServiceFeature", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"ServiceFeature", 'DateTime'>

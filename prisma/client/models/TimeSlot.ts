@@ -31,18 +31,18 @@ export type TimeSlotAvgAggregateOutputType = {
 }
 
 export type TimeSlotSumAggregateOutputType = {
-  id: bigint | null
+  id: number | null
 }
 
 export type TimeSlotMinAggregateOutputType = {
-  id: bigint | null
-  time: Date | null
+  id: number | null
+  time: string | null
   createdAt: Date | null
 }
 
 export type TimeSlotMaxAggregateOutputType = {
-  id: bigint | null
-  time: Date | null
+  id: number | null
+  time: string | null
   createdAt: Date | null
 }
 
@@ -168,8 +168,8 @@ export type TimeSlotGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 export type TimeSlotGroupByOutputType = {
-  id: bigint
-  time: Date
+  id: number
+  time: string
   createdAt: Date
   _count: TimeSlotCountAggregateOutputType | null
   _avg: TimeSlotAvgAggregateOutputType | null
@@ -197,8 +197,8 @@ export type TimeSlotWhereInput = {
   AND?: Prisma.TimeSlotWhereInput | Prisma.TimeSlotWhereInput[]
   OR?: Prisma.TimeSlotWhereInput[]
   NOT?: Prisma.TimeSlotWhereInput | Prisma.TimeSlotWhereInput[]
-  id?: Prisma.BigIntFilter<"TimeSlot"> | bigint | number
-  time?: Prisma.DateTimeFilter<"TimeSlot"> | Date | string
+  id?: Prisma.IntFilter<"TimeSlot"> | number
+  time?: Prisma.StringFilter<"TimeSlot"> | string
   createdAt?: Prisma.DateTimeFilter<"TimeSlot"> | Date | string
   dateSlots?: Prisma.DateSlotListRelationFilter
 }
@@ -208,14 +208,15 @@ export type TimeSlotOrderByWithRelationInput = {
   time?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   dateSlots?: Prisma.DateSlotOrderByRelationAggregateInput
+  _relevance?: Prisma.TimeSlotOrderByRelevanceInput
 }
 
 export type TimeSlotWhereUniqueInput = Prisma.AtLeast<{
-  id?: bigint | number
+  id?: number
   AND?: Prisma.TimeSlotWhereInput | Prisma.TimeSlotWhereInput[]
   OR?: Prisma.TimeSlotWhereInput[]
   NOT?: Prisma.TimeSlotWhereInput | Prisma.TimeSlotWhereInput[]
-  time?: Prisma.DateTimeFilter<"TimeSlot"> | Date | string
+  time?: Prisma.StringFilter<"TimeSlot"> | string
   createdAt?: Prisma.DateTimeFilter<"TimeSlot"> | Date | string
   dateSlots?: Prisma.DateSlotListRelationFilter
 }, "id">
@@ -235,55 +236,58 @@ export type TimeSlotScalarWhereWithAggregatesInput = {
   AND?: Prisma.TimeSlotScalarWhereWithAggregatesInput | Prisma.TimeSlotScalarWhereWithAggregatesInput[]
   OR?: Prisma.TimeSlotScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TimeSlotScalarWhereWithAggregatesInput | Prisma.TimeSlotScalarWhereWithAggregatesInput[]
-  id?: Prisma.BigIntWithAggregatesFilter<"TimeSlot"> | bigint | number
-  time?: Prisma.DateTimeWithAggregatesFilter<"TimeSlot"> | Date | string
+  id?: Prisma.IntWithAggregatesFilter<"TimeSlot"> | number
+  time?: Prisma.StringWithAggregatesFilter<"TimeSlot"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TimeSlot"> | Date | string
 }
 
 export type TimeSlotCreateInput = {
-  id?: bigint | number
-  time: Date | string
+  time: string
   createdAt?: Date | string
   dateSlots?: Prisma.DateSlotCreateNestedManyWithoutTimeSlotInput
 }
 
 export type TimeSlotUncheckedCreateInput = {
-  id?: bigint | number
-  time: Date | string
+  id?: number
+  time: string
   createdAt?: Date | string
   dateSlots?: Prisma.DateSlotUncheckedCreateNestedManyWithoutTimeSlotInput
 }
 
 export type TimeSlotUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  time?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dateSlots?: Prisma.DateSlotUpdateManyWithoutTimeSlotNestedInput
 }
 
 export type TimeSlotUncheckedUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  time?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dateSlots?: Prisma.DateSlotUncheckedUpdateManyWithoutTimeSlotNestedInput
 }
 
 export type TimeSlotCreateManyInput = {
-  id?: bigint | number
-  time: Date | string
+  id?: number
+  time: string
   createdAt?: Date | string
 }
 
 export type TimeSlotUpdateManyMutationInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  time?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TimeSlotUncheckedUpdateManyInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  time?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TimeSlotOrderByRelevanceInput = {
+  fields: Prisma.TimeSlotOrderByRelevanceFieldEnum | Prisma.TimeSlotOrderByRelevanceFieldEnum[]
+  sort: Prisma.SortOrder
+  search: string
 }
 
 export type TimeSlotCountOrderByAggregateInput = {
@@ -332,14 +336,13 @@ export type TimeSlotUpdateOneRequiredWithoutDateSlotsNestedInput = {
 }
 
 export type TimeSlotCreateWithoutDateSlotsInput = {
-  id?: bigint | number
-  time: Date | string
+  time: string
   createdAt?: Date | string
 }
 
 export type TimeSlotUncheckedCreateWithoutDateSlotsInput = {
-  id?: bigint | number
-  time: Date | string
+  id?: number
+  time: string
   createdAt?: Date | string
 }
 
@@ -360,14 +363,13 @@ export type TimeSlotUpdateToOneWithWhereWithoutDateSlotsInput = {
 }
 
 export type TimeSlotUpdateWithoutDateSlotsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  time?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TimeSlotUncheckedUpdateWithoutDateSlotsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  time?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -430,8 +432,8 @@ export type $TimeSlotPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     dateSlots: Prisma.$DateSlotPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: bigint
-    time: Date
+    id: number
+    time: string
     createdAt: Date
   }, ExtArgs["result"]["timeSlot"]>
   composites: {}
@@ -803,8 +805,8 @@ export interface Prisma__TimeSlotClient<T, Null = never, ExtArgs extends runtime
  * Fields of the TimeSlot model
  */
 export interface TimeSlotFieldRefs {
-  readonly id: Prisma.FieldRef<"TimeSlot", 'BigInt'>
-  readonly time: Prisma.FieldRef<"TimeSlot", 'DateTime'>
+  readonly id: Prisma.FieldRef<"TimeSlot", 'Int'>
+  readonly time: Prisma.FieldRef<"TimeSlot", 'String'>
   readonly createdAt: Prisma.FieldRef<"TimeSlot", 'DateTime'>
 }
     

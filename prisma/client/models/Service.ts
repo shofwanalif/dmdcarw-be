@@ -34,15 +34,15 @@ export type ServiceAvgAggregateOutputType = {
 }
 
 export type ServiceSumAggregateOutputType = {
-  id: bigint | null
-  serviceCategoryId: bigint | null
+  id: number | null
+  serviceCategoryId: number | null
   price: runtime.Decimal | null
   duration: number | null
 }
 
 export type ServiceMinAggregateOutputType = {
-  id: bigint | null
-  serviceCategoryId: bigint | null
+  id: number | null
+  serviceCategoryId: number | null
   name: string | null
   price: runtime.Decimal | null
   duration: number | null
@@ -52,8 +52,8 @@ export type ServiceMinAggregateOutputType = {
 }
 
 export type ServiceMaxAggregateOutputType = {
-  id: bigint | null
-  serviceCategoryId: bigint | null
+  id: number | null
+  serviceCategoryId: number | null
   name: string | null
   price: runtime.Decimal | null
   duration: number | null
@@ -210,8 +210,8 @@ export type ServiceGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 export type ServiceGroupByOutputType = {
-  id: bigint
-  serviceCategoryId: bigint
+  id: number
+  serviceCategoryId: number
   name: string
   price: runtime.Decimal
   duration: number
@@ -244,17 +244,17 @@ export type ServiceWhereInput = {
   AND?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
   OR?: Prisma.ServiceWhereInput[]
   NOT?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
-  id?: Prisma.BigIntFilter<"Service"> | bigint | number
-  serviceCategoryId?: Prisma.BigIntFilter<"Service"> | bigint | number
+  id?: Prisma.IntFilter<"Service"> | number
+  serviceCategoryId?: Prisma.IntFilter<"Service"> | number
   name?: Prisma.StringFilter<"Service"> | string
   price?: Prisma.DecimalFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFilter<"Service"> | number
   createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Service"> | Date | string | null
-  serviceCategory?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
   dateSlots?: Prisma.DateSlotListRelationFilter
   featureMaps?: Prisma.ServiceFeatureMapListRelationFilter
+  serviceCategory?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
 }
 
 export type ServiceOrderByWithRelationInput = {
@@ -266,27 +266,27 @@ export type ServiceOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  serviceCategory?: Prisma.ServiceCategoryOrderByWithRelationInput
   dateSlots?: Prisma.DateSlotOrderByRelationAggregateInput
   featureMaps?: Prisma.ServiceFeatureMapOrderByRelationAggregateInput
+  serviceCategory?: Prisma.ServiceCategoryOrderByWithRelationInput
   _relevance?: Prisma.ServiceOrderByRelevanceInput
 }
 
 export type ServiceWhereUniqueInput = Prisma.AtLeast<{
-  id?: bigint | number
+  id?: number
   AND?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
   OR?: Prisma.ServiceWhereInput[]
   NOT?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
-  serviceCategoryId?: Prisma.BigIntFilter<"Service"> | bigint | number
+  serviceCategoryId?: Prisma.IntFilter<"Service"> | number
   name?: Prisma.StringFilter<"Service"> | string
   price?: Prisma.DecimalFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFilter<"Service"> | number
   createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Service"> | Date | string | null
-  serviceCategory?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
   dateSlots?: Prisma.DateSlotListRelationFilter
   featureMaps?: Prisma.ServiceFeatureMapListRelationFilter
+  serviceCategory?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
 }, "id">
 
 export type ServiceOrderByWithAggregationInput = {
@@ -309,8 +309,8 @@ export type ServiceScalarWhereWithAggregatesInput = {
   AND?: Prisma.ServiceScalarWhereWithAggregatesInput | Prisma.ServiceScalarWhereWithAggregatesInput[]
   OR?: Prisma.ServiceScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServiceScalarWhereWithAggregatesInput | Prisma.ServiceScalarWhereWithAggregatesInput[]
-  id?: Prisma.BigIntWithAggregatesFilter<"Service"> | bigint | number
-  serviceCategoryId?: Prisma.BigIntWithAggregatesFilter<"Service"> | bigint | number
+  id?: Prisma.IntWithAggregatesFilter<"Service"> | number
+  serviceCategoryId?: Prisma.IntWithAggregatesFilter<"Service"> | number
   name?: Prisma.StringWithAggregatesFilter<"Service"> | string
   price?: Prisma.DecimalWithAggregatesFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntWithAggregatesFilter<"Service"> | number
@@ -320,21 +320,20 @@ export type ServiceScalarWhereWithAggregatesInput = {
 }
 
 export type ServiceCreateInput = {
-  id?: bigint | number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
   dateSlots?: Prisma.DateSlotCreateNestedManyWithoutServiceInput
   featureMaps?: Prisma.ServiceFeatureMapCreateNestedManyWithoutServiceInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
 }
 
 export type ServiceUncheckedCreateInput = {
-  id?: bigint | number
-  serviceCategoryId: bigint | number
+  id?: number
+  serviceCategoryId: number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
@@ -346,21 +345,20 @@ export type ServiceUncheckedCreateInput = {
 }
 
 export type ServiceUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
   dateSlots?: Prisma.DateSlotUpdateManyWithoutServiceNestedInput
   featureMaps?: Prisma.ServiceFeatureMapUpdateManyWithoutServiceNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
 }
 
 export type ServiceUncheckedUpdateInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceCategoryId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceCategoryId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -372,8 +370,8 @@ export type ServiceUncheckedUpdateInput = {
 }
 
 export type ServiceCreateManyInput = {
-  id?: bigint | number
-  serviceCategoryId: bigint | number
+  id?: number
+  serviceCategoryId: number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
@@ -383,7 +381,6 @@ export type ServiceCreateManyInput = {
 }
 
 export type ServiceUpdateManyMutationInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -393,8 +390,8 @@ export type ServiceUpdateManyMutationInput = {
 }
 
 export type ServiceUncheckedUpdateManyInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceCategoryId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceCategoryId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -521,14 +518,6 @@ export type DecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type ServiceCreateNestedOneWithoutFeatureMapsInput = {
   create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatureMapsInput, Prisma.ServiceUncheckedCreateWithoutFeatureMapsInput>
   connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatureMapsInput
@@ -558,7 +547,6 @@ export type ServiceUpdateOneRequiredWithoutDateSlotsNestedInput = {
 }
 
 export type ServiceCreateWithoutServiceCategoryInput = {
-  id?: bigint | number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
@@ -570,7 +558,7 @@ export type ServiceCreateWithoutServiceCategoryInput = {
 }
 
 export type ServiceUncheckedCreateWithoutServiceCategoryInput = {
-  id?: bigint | number
+  id?: number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
@@ -611,8 +599,8 @@ export type ServiceScalarWhereInput = {
   AND?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
   OR?: Prisma.ServiceScalarWhereInput[]
   NOT?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
-  id?: Prisma.BigIntFilter<"Service"> | bigint | number
-  serviceCategoryId?: Prisma.BigIntFilter<"Service"> | bigint | number
+  id?: Prisma.IntFilter<"Service"> | number
+  serviceCategoryId?: Prisma.IntFilter<"Service"> | number
   name?: Prisma.StringFilter<"Service"> | string
   price?: Prisma.DecimalFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFilter<"Service"> | number
@@ -622,20 +610,19 @@ export type ServiceScalarWhereInput = {
 }
 
 export type ServiceCreateWithoutFeatureMapsInput = {
-  id?: bigint | number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
   dateSlots?: Prisma.DateSlotCreateNestedManyWithoutServiceInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
 }
 
 export type ServiceUncheckedCreateWithoutFeatureMapsInput = {
-  id?: bigint | number
-  serviceCategoryId: bigint | number
+  id?: number
+  serviceCategoryId: number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
@@ -662,20 +649,19 @@ export type ServiceUpdateToOneWithWhereWithoutFeatureMapsInput = {
 }
 
 export type ServiceUpdateWithoutFeatureMapsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
   dateSlots?: Prisma.DateSlotUpdateManyWithoutServiceNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
 }
 
 export type ServiceUncheckedUpdateWithoutFeatureMapsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceCategoryId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceCategoryId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -686,20 +672,19 @@ export type ServiceUncheckedUpdateWithoutFeatureMapsInput = {
 }
 
 export type ServiceCreateWithoutDateSlotsInput = {
-  id?: bigint | number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
   featureMaps?: Prisma.ServiceFeatureMapCreateNestedManyWithoutServiceInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
 }
 
 export type ServiceUncheckedCreateWithoutDateSlotsInput = {
-  id?: bigint | number
-  serviceCategoryId: bigint | number
+  id?: number
+  serviceCategoryId: number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
@@ -726,20 +711,19 @@ export type ServiceUpdateToOneWithWhereWithoutDateSlotsInput = {
 }
 
 export type ServiceUpdateWithoutDateSlotsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
   featureMaps?: Prisma.ServiceFeatureMapUpdateManyWithoutServiceNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
 }
 
 export type ServiceUncheckedUpdateWithoutDateSlotsInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  serviceCategoryId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceCategoryId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -750,7 +734,7 @@ export type ServiceUncheckedUpdateWithoutDateSlotsInput = {
 }
 
 export type ServiceCreateManyServiceCategoryInput = {
-  id?: bigint | number
+  id?: number
   name: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   duration: number
@@ -760,7 +744,6 @@ export type ServiceCreateManyServiceCategoryInput = {
 }
 
 export type ServiceUpdateWithoutServiceCategoryInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -772,7 +755,7 @@ export type ServiceUpdateWithoutServiceCategoryInput = {
 }
 
 export type ServiceUncheckedUpdateWithoutServiceCategoryInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -784,7 +767,7 @@ export type ServiceUncheckedUpdateWithoutServiceCategoryInput = {
 }
 
 export type ServiceUncheckedUpdateManyWithoutServiceCategoryInput = {
-  id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   duration?: Prisma.IntFieldUpdateOperationsInput | number
@@ -842,9 +825,9 @@ export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   dateSlots?: boolean | Prisma.Service$dateSlotsArgs<ExtArgs>
   featureMaps?: boolean | Prisma.Service$featureMapsArgs<ExtArgs>
+  serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["service"]>
 
@@ -863,22 +846,22 @@ export type ServiceSelectScalar = {
 
 export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "serviceCategoryId" | "name" | "price" | "duration" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["service"]>
 export type ServiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   dateSlots?: boolean | Prisma.Service$dateSlotsArgs<ExtArgs>
   featureMaps?: boolean | Prisma.Service$featureMapsArgs<ExtArgs>
+  serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Service"
   objects: {
-    serviceCategory: Prisma.$ServiceCategoryPayload<ExtArgs>
     dateSlots: Prisma.$DateSlotPayload<ExtArgs>[]
     featureMaps: Prisma.$ServiceFeatureMapPayload<ExtArgs>[]
+    serviceCategory: Prisma.$ServiceCategoryPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: bigint
-    serviceCategoryId: bigint
+    id: number
+    serviceCategoryId: number
     name: string
     price: runtime.Decimal
     duration: number
@@ -1225,9 +1208,9 @@ readonly fields: ServiceFieldRefs;
  */
 export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  serviceCategory<T extends Prisma.ServiceCategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceCategoryClient<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   dateSlots<T extends Prisma.Service$dateSlotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$dateSlotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DateSlotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   featureMaps<T extends Prisma.Service$featureMapsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$featureMapsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceFeatureMapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  serviceCategory<T extends Prisma.ServiceCategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceCategoryClient<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1257,8 +1240,8 @@ export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends runtime.
  * Fields of the Service model
  */
 export interface ServiceFieldRefs {
-  readonly id: Prisma.FieldRef<"Service", 'BigInt'>
-  readonly serviceCategoryId: Prisma.FieldRef<"Service", 'BigInt'>
+  readonly id: Prisma.FieldRef<"Service", 'Int'>
+  readonly serviceCategoryId: Prisma.FieldRef<"Service", 'Int'>
   readonly name: Prisma.FieldRef<"Service", 'String'>
   readonly price: Prisma.FieldRef<"Service", 'Decimal'>
   readonly duration: Prisma.FieldRef<"Service", 'Int'>

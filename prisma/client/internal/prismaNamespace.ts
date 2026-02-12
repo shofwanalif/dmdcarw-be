@@ -1183,10 +1183,10 @@ export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt',
+  role: 'role',
   emailVerified: 'emailVerified',
   image: 'image',
   banned: 'banned'
@@ -1253,7 +1253,9 @@ export const DateSlotScalarFieldEnum = {
   timeSlotId: 'timeSlotId',
   serviceId: 'serviceId',
   maxCapacity: 'maxCapacity',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type DateSlotScalarFieldEnum = (typeof DateSlotScalarFieldEnum)[keyof typeof DateSlotScalarFieldEnum]
@@ -1369,6 +1371,13 @@ export const ServiceFeatureOrderByRelevanceFieldEnum = {
 export type ServiceFeatureOrderByRelevanceFieldEnum = (typeof ServiceFeatureOrderByRelevanceFieldEnum)[keyof typeof ServiceFeatureOrderByRelevanceFieldEnum]
 
 
+export const TimeSlotOrderByRelevanceFieldEnum = {
+  time: 'time'
+} as const
+
+export type TimeSlotOrderByRelevanceFieldEnum = (typeof TimeSlotOrderByRelevanceFieldEnum)[keyof typeof TimeSlotOrderByRelevanceFieldEnum]
+
+
 export const BookingOrderByRelevanceFieldEnum = {
   bookingCode: 'bookingCode',
   userId: 'userId',
@@ -1443,9 +1452,9 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'BigInt'
+ * Reference to a field of type 'Int'
  */
-export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -1453,13 +1462,6 @@ export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'Decimal'
  */
 export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-/**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
